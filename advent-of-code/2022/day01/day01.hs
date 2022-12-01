@@ -30,10 +30,9 @@ sortDesc = sortOn Down
 day2 x = sumList $ take 3 $ sortDesc x
 
 main :: IO ()
-main = do
-  withFile "input.txt" ReadMode $ \handle -> do
-    contents <- hGetContents handle
-    let itemsPerElf = cleanInput contents
-    let totalCaloriesPerElf = map sumList itemsPerElf
-    printf "Day 1: %v\n" (day1 totalCaloriesPerElf)
-    printf "Day 2: %v\n" (day2 totalCaloriesPerElf)
+main = withFile "input.txt" ReadMode $ \handle -> do
+  contents <- hGetContents handle
+  let itemsPerElf = cleanInput contents
+  let totalCaloriesPerElf = map sumList itemsPerElf
+  printf "Day 1: %v\n" (day1 totalCaloriesPerElf)
+  printf "Day 2: %v\n" (day2 totalCaloriesPerElf)
