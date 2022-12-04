@@ -56,7 +56,7 @@ decodeSelfMove adversary "X" = Rock
 decodeSelfMove adversary "Y" = Paper
 decodeSelfMove adversary "Z" = Scissors
 
-day1 plays = totalScore plays decodeSelfMove
+part1 plays = totalScore plays decodeSelfMove
 
 losingMove :: Move -> Move
 losingMove Rock = Scissors
@@ -68,11 +68,11 @@ decodeSelfOutcome adversary "X" = losingMove adversary
 decodeSelfOutcome adversary "Y" = adversary -- draw always plays adversary's move
 decodeSelfOutcome adversary "Z" = winningMove adversary
 
-day2 plays = totalScore plays decodeSelfOutcome 
+part2 plays = totalScore plays decodeSelfOutcome 
 
 main :: IO ()
 main = withFile "input.txt" ReadMode $ \handle -> do
     contents <- hGetContents handle
     let input = cleanInput contents
-    printf "Day 1: %v\n" (day1 input)
-    printf "Day 2: %v\n" (day2 input)
+    printf "Part 1: %v\n" (part1 input)
+    printf "Part 2: %v\n" (part2 input)
